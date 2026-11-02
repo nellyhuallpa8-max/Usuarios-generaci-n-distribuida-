@@ -1,0 +1,6 @@
+{
+  "name": "ENDE DEL BENI - Generación Distribuida",
+  "description": "Aplicación web de registro de usuarios interesados en el programa de Generación Distribuida de ENDE DEL BENI para ferias y stands comerciales.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

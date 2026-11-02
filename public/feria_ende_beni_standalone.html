@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>ENDE DEL BENI - Generación Distribuida | Registro Feria</title>
+  <meta name="description" content="Registro de usuarios interesados en el programa de Generación Distribuida de ENDE DEL BENI.">
+  
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif'],
+          },
+          colors: {
+            ende: {
+              blue: '#003B71',
+              dark: '#002244',
+              cyan: '#0099DA',
+              yellow: '#FFB800',
+              green: '#10B981',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <style>
+    @keyframes spinSlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes sheenSweep {
+      0% { transform: translateX(-150%) skewX(-20deg); }
+      50%, 100% { transform: translateX(200%) skewX(-20deg); }
+    }
+    @keyframes dashFlow {
+      to { stroke-dashoffset: -40; }
+    }
+    .animate-spin-slow { animation: spinSlow 30s linear infinite; }
+    .animate-sheen { animation: sheenSweep 4s infinite ease-in-out; }
+    .animate-dash-flow { stroke-dasharray: 6 6; animation: dashFlow 1.2s linear infinite; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-amber-400 selection:text-slate-900 min-h-screen flex flex-col">
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="w-full bg-[#002244] text-white px-4 sm:px-8 py-3.5 flex items-center justify-between border-b border-white/10 sticky top-0 z-40 backdrop-blur-md">
+    <div class="flex items-center gap-3">
+      <!-- ENDE DEL BENI Official Logo Image on Top Left -->
+      <div class="flex flex-col items-start">
+        <div class="bg-white/95 px-2.5 py-1 rounded-xl shadow-sm">
+          <img src="/assets/aistudio/logo-ende_eb7f8b44.png" alt="ENDE DEL BENI" class="h-9 sm:h-10 w-auto object-contain">
+        </div>
+        <span class="text-[10px] sm:text-xs font-black text-amber-300 uppercase tracking-widest pl-1 mt-0.5 flex items-center gap-1">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          ENDE DELBENI SAM · LA ENERGÍA DEL BENI
+        </span>
+      </div>
+    </div>
+    
+    <div class="flex items-center gap-2 sm:gap-3">
+      <!-- Botón Descargar Requisitos PDF -->
+      <a href="/assets/aistudio/Requisitos-Generacio-Distribuidav3__1__febfcf3a.pdf" download="Requisitos-Generacion-Distribuida-ENDE-DEL-BENI.pdf" class="px-3.5 py-2 rounded-xl bg-white/15 hover:bg-white/25 text-white font-bold text-xs border border-white/25 shadow transition active:scale-95 flex items-center gap-1.5">
+        <svg class="w-4 h-4 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+        <span class="hidden xs:inline">Descargar</span> Requisitos PDF
+      </a>
+
+      <a href="#formulario" class="px-5 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs uppercase tracking-wider shadow-md transition active:scale-95">
+        Registrarme
+      </a>
+    </div>
+  </header>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="relative min-h-[90vh] bg-gradient-to-b from-[#002244] via-[#003B71] to-[#004B8D] text-white flex items-center justify-center py-12 px-4 sm:px-8 overflow-hidden">
+    <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <div class="lg:col-span-6 space-y-6 text-center lg:text-left">
+        <div class="inline-block px-3.5 py-1.5 rounded-full bg-white/10 border border-amber-300/30 text-amber-300 text-xs font-bold uppercase tracking-wide">
+          Programa Oficial · ENDE DEL BENI
+        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight">
+          Genera tu <br><span class="text-amber-300">propia energía</span>
+        </h1>
+        <p class="text-lg sm:text-xl text-blue-100 font-medium">
+          Sé parte de los usuarios de Generación Distribuida de ENDE DEL BENI.
+        </p>
+        <p class="text-sm text-blue-200 max-w-lg">
+          Produce tu propia electricidad solar en el Beni, ahorra hasta un 80% en tu factura mensual y vende tus excedentes a la red pública.
+        </p>
+        <div class="pt-2 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          <a href="#formulario" class="px-8 py-4 rounded-2xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-base shadow-lg transition active:scale-95 text-center">
+            Quiero registrarme
+          </a>
+          <a href="#como-funciona" class="px-6 py-4 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-bold text-sm text-center border border-white/20 transition">
+            ¿Cómo funciona?
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero Visual -->
+      <div class="lg:col-span-6 flex items-center justify-center">
+        <div class="w-full max-w-lg bg-[#001D3D]/50 rounded-3xl p-4 border border-white/10 shadow-2xl">
+          <svg viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto">
+            <rect width="800" height="500" rx="20" fill="#0284C7"/>
+            <circle cx="160" cy="110" r="80" fill="#FEF08A" opacity="0.3"/>
+            <circle cx="160" cy="110" r="50" fill="#FBBF24"/>
+            <rect x="0" y="380" width="800" height="120" fill="#4D7C0F"/>
+            <!-- Casa Beniana -->
+            <rect x="180" y="220" width="440" height="160" fill="#F8FAFC" rx="4"/>
+            <polygon points="400,90 140,230 660,230" fill="#B45309"/>
+            <!-- Techo Solar -->
+            <rect x="220" y="130" width="360" height="85" rx="4" fill="#0F172A" stroke="#38BDF8" strokeWidth="2"/>
+            <line x1="340" y1="130" x2="340" y2="215" stroke="#38BDF8" strokeWidth="1"/>
+            <line x1="460" y1="130" x2="460" y2="215" stroke="#38BDF8" strokeWidth="1"/>
+            <line x1="220" y1="172" x2="580" y2="172" stroke="#38BDF8" strokeWidth="1"/>
+            <!-- Palmera -->
+            <path d="M720 400 Q 700 240 730 140" stroke="#78350F" strokeWidth="14" fill="none"/>
+            <circle cx="730" cy="140" r="30" fill="#15803D"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ¿CÓMO FUNCIONA? ==================== -->
+  <section id="como-funciona" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full uppercase">Flujo Continuo</span>
+        <h2 class="text-3xl font-extrabold text-[#003B71] mt-2">¿Cómo Funciona?</h2>
+        <p class="text-sm text-slate-600 mt-2">Sol → Paneles Solares → Inversor → Medidor Bidireccional → Red ENDE DEL BENI</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+        <div class="p-5 rounded-2xl border-2 border-amber-200 bg-amber-50/50">
+          <span class="text-2xl font-black text-amber-500">01</span>
+          <h3 class="font-bold text-slate-900 mt-1">El Sol del Beni</h3>
+          <p class="text-xs text-slate-600 mt-2">Radiación solar abundante y constante durante todo el año en nuestro departamento.</p>
+        </div>
+        <div class="p-5 rounded-2xl border-2 border-sky-200 bg-sky-50/50">
+          <span class="text-2xl font-black text-sky-500">02</span>
+          <h3 class="font-bold text-slate-900 mt-1">Paneles Solares</h3>
+          <p class="text-xs text-slate-600 mt-2">Módulos en tu techo que transforman la luz solar en electricidad continua (CC).</p>
+        </div>
+        <div class="p-5 rounded-2xl border-2 border-emerald-200 bg-emerald-50/50">
+          <span class="text-2xl font-black text-emerald-500">03</span>
+          <h3 class="font-bold text-slate-900 mt-1">Inversor Inteligente</h3>
+          <p class="text-xs text-slate-600 mt-2">Convierte la corriente continua en 220V CA lista para electrodomésticos.</p>
+        </div>
+        <div class="p-5 rounded-2xl border-2 border-indigo-200 bg-indigo-50/50">
+          <span class="text-2xl font-black text-indigo-500">04</span>
+          <h3 class="font-bold text-slate-900 mt-1">Medidor Bidireccional</h3>
+          <p class="text-xs text-slate-600 mt-2">Registra tu consumo y contabiliza el excedente limpio que inyectas a la red.</p>
+        </div>
+        <div class="p-5 rounded-2xl border-2 border-blue-200 bg-blue-50/50">
+          <span class="text-2xl font-black text-[#003B71]">05</span>
+          <h3 class="font-bold text-slate-900 mt-1">Red ENDE DEL BENI</h3>
+          <p class="text-xs text-slate-600 mt-2">Respaldo continuo 24/7 y compensación económica de excedentes en tu factura.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== EMPRESAS INSTALADORAS APROBADAS (LISTA COMPACTA) ==================== -->
+  <section id="empresas-instaladoras" class="py-8 bg-slate-50 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-2 mb-3">
+        <div>
+          <h3 class="text-base sm:text-lg font-black text-[#003B71]">Empresas Instaladoras Aprobadas (12)</h3>
+          <p class="text-[11px] text-slate-500">Autorizadas por ENDE DELBENI S.A.M. para elaboración y ejecución de proyectos solares.</p>
+        </div>
+        <span class="text-[10px] font-bold text-[#003B71] bg-blue-100 px-2.5 py-1 rounded-full uppercase">Registro AETN</span>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-x-auto max-h-80 overflow-y-auto">
+        <table class="w-full text-left border-collapse text-[11px]">
+          <thead class="sticky top-0 bg-[#003B71] text-white font-bold uppercase text-[10px] shadow-xs">
+            <tr>
+              <th class="py-2 px-2.5 text-center w-8">N°</th>
+              <th class="py-2 px-3">Empresa</th>
+              <th class="py-2 px-3">Representante</th>
+              <th class="py-2 px-3">Dirección</th>
+              <th class="py-2 px-2 text-center">Teléfono</th>
+              <th class="py-2 px-3">Correo</th>
+              <th class="py-2 px-2 text-center">Habilitación</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100">
+            <tr class="bg-[#EBF7FD]/70 hover:bg-amber-50">
+              <td class="py-3 px-3 text-center font-bold">1</td>
+              <td class="py-3 px-4 font-bold text-[#003B71]">CASA SOLAR <span class="ml-1 px-1.5 py-0.5 rounded bg-amber-400 text-slate-950 text-[10px]">Trinidad</span></td>
+              <td class="py-3 px-4">Tupaj Arturo Camilo Vargas Vega</td>
+              <td class="py-3 px-4">Av. Santa Cruz N° 380, Zona Central – Trinidad</td>
+              <td class="py-3 px-3 text-center"><a href="tel:72221009" class="font-bold text-emerald-700">72221009</a></td>
+              <td class="py-3 px-4 text-sky-700">casasolartdd@gmail.com</td>
+              <td class="py-3 px-3 text-center"><span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold">Elaboración y ejecución</span></td>
+            </tr>
+            <tr class="bg-white hover:bg-amber-50">
+              <td class="py-3 px-3 text-center font-bold">2</td>
+              <td class="py-3 px-4 font-bold text-[#003B71]">DATEC LTDA</td>
+              <td class="py-3 px-4">Blanca Rosa Salces Cuellar</td>
+              <td class="py-3 px-4">Calle Velasco N° 213, Zona Central, entre Pari y Suarez de Figueroa – Santa Cruz</td>
+              <td class="py-3 px-3 text-center"><a href="tel:3151100" class="font-bold text-emerald-700">3151100</a></td>
+              <td class="py-3 px-4 text-sky-700">ovacadiez@datec.com.bo</td>
+              <td class="py-3 px-3 text-center"><span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold">Elaboración y ejecución</span></td>
+            </tr>
+            <tr class="bg-[#EBF7FD]/70 hover:bg-amber-50">
+              <td class="py-3 px-3 text-center font-bold">3</td>
+              <td class="py-3 px-4 font-bold text-[#003B71]">ARMOCORP S.R.L.</td>
+              <td class="py-3 px-4">Samantha Montenegro Velasquez</td>
+              <td class="py-3 px-4">B/2 de Abril, esquina calle 3 y 4, Santa Cruz</td>
+              <td class="py-3 px-3 text-center"><a href="tel:72151577" class="font-bold text-emerald-700">72151577</a></td>
+              <td class="py-3 px-4 text-sky-700">contabilidad@armosolar.com.bo</td>
+              <td class="py-3 px-3 text-center"><span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold">Elaboración y ejecución</span></td>
+            </tr>
+            <tr class="bg-white hover:bg-amber-50">
+              <td class="py-3 px-3 text-center font-bold">4</td>
+              <td class="py-3 px-4 font-bold text-[#003B71]">SOLARIA S.R.L.</td>
+              <td class="py-3 px-4">Luis Ovando Banzer</td>
+              <td class="py-3 px-4">Avenida Iberica, entre Radial Castilla y Mangalito, Condominio Macarena, Santa Cruz</td>
+              <td class="py-3 px-3 text-center"><a href="tel:78090211" class="font-bold text-emerald-700">78090211</a></td>
+              <td class="py-3 px-4 text-sky-700">informacion@solariabo.com</td>
+              <td class="py-3 px-3 text-center"><span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold">Elaboración y ejecución</span></td>
+            </tr>
+            <tr class="bg-[#EBF7FD]/70 hover:bg-amber-50">
+              <td class="py-3 px-3 text-center font-bold">5</td>
+              <td class="py-3 px-4 font-bold text-[#003B71]">TOTAL RADIO SYSTEMS BOLIVIA TRS LTDA</td>
+              <td class="py-3 px-4">Adriana Alicia Vaca Dulcich</td>
+              <td class="py-3 px-4">Zona Miraflores, calle Juan Manuel Loza N° 1906 – La Paz</td>
+              <td class="py-3 px-3 text-center"><a href="tel:2225060" class="font-bold text-emerald-700">2225060</a></td>
+              <td class="py-3 px-4 text-sky-700">nrios@totalradios.com</td>
+              <td class="py-3 px-3 text-center"><span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold">Elaboración y ejecución</span></td>
+            </tr>
+            <tr class="bg-white hover:bg-amber-50">
+              <td class="py-3 px-3 text-center font-bold">6</td>
+              <td class="py-3 px-4 font-bold text-[#003B71]">MCLXELETTBO SRL <span class="ml-1 px-1.5 py-0.5 rounded bg-amber-400 text-slate-950 text-[10px]">Riberalta</span></td>
+              <td class="py-3 px-4">Ramiro Almendras Diaz</td>
+              <td class="py-3 px-4">Calle Dr. Juan de Dios Martinez, esquina Dr. Antonio Vaca Diez, Riberalta</td>
+              <td class="py-3 px-3 text-center"><a href="tel:75742732" class="font-bold text-emerald-700">75742732</a></td>
+              <td class="py-3 px-4 text-sky-700">ramiroalmendras@gmail.com</td>
+              <td class="py-3 px-3 text-center"><span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold">Elaboración y ejecución</span></td>
+            </tr>
+            <tr class="bg-[#EBF7FD]/70 hover:bg-amber-50">
+              <td class="py-3 px-3 text-center font-bold">7</td>
+              <td class="py-3 px-4 font-bold text-[#003B71]">ENERVIDA</td>
+              <td class="py-3 px-4">Boris Mario Ardaya Limachi</td>
+              <td class="py-3 px-4">Calle Condorini N° 118, Zona Marquirivi, La Paz, Bolivia</td>
+              <td class="py-3 px-3 text-center"><a href="tel:71595791" class="font-bold text-emerald-700">71595791</a></td>
+              <td class="py-3 px-4 text-sky-700">boris.ardaya@enervida.info</td>
+              <td class="py-3 px-3 text-center"><span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold">Elaboración y ejecución</span></td>
+            </tr>
+            <tr class="bg-white hover:bg-amber-50">
+              <td class="py-3 px-3 text-center font-bold">8</td>
+              <td class="py-3 px-4 font-bold text-[#003B71]">SERVICIOS INTEGRALES DE ENERGIA S.A.</td>
+              <td class="py-3 px-4">Osvaldo Ivailo Peña Treneva</td>
+              <td class="py-3 px-4">Av. Melchor Perez de Olguin N° 2848, Cochabamba, Bolivia</td>
+              <td class="py-3 px-3 text-center"><a href="tel:67406290" class="font-bold text-emerald-700">67406290</a></td>
+              <td class="py-3 px-4 text-sky-700">info@sie-sa.com</td>
+              <td class="py-3 px-3 text-center"><span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold">Elaboración y ejecución</span></td>
+            </tr>
+            <tr class="bg-[#EBF7FD]/70 hover:bg-amber-50">
+              <td class="py-3 px-3 text-center font-bold">9</td>
+              <td class="py-3 px-4 font-bold text-[#003B71]">ROMERO & SANTOS ENERGY S.R.L. <span class="ml-1 px-1.5 py-0.5 rounded bg-amber-400 text-slate-950 text-[10px]">Beni</span></td>
+              <td class="py-3 px-4">David Rodrigo Romero Almendras</td>
+              <td class="py-3 px-4">Calle Reyes entre Oscar Unzaga de la Vega y Rotary Internacional N° 639, Beni, Bolivia</td>
+              <td class="py-3 px-3 text-center"><a href="tel:76435122" class="font-bold text-emerald-700">76435122</a></td>
+              <td class="py-3 px-4 text-sky-700">d.rodrigoromeroa@gmail.com</td>
+              <td class="py-3 px-3 text-center"><span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold">Elaboración y ejecución</span></td>
+            </tr>
+            <tr class="bg-white hover:bg-amber-50">
+              <td class="py-3 px-3 text-center font-bold">10</td>
+              <td class="py-3 px-4 font-bold text-[#003B71]">DESMART LTDA.</td>
+              <td class="py-3 px-4">Juan Carlos Pusarico Rodriguez</td>
+              <td class="py-3 px-4">Zona Kantutani, Av. Capitan Ravelo Nro. 2007, Edif. Taborga I, piso: Mezanine, La Paz, Bolivia</td>
+              <td class="py-3 px-3 text-center"><a href="tel:72191566" class="font-bold text-emerald-700">72191566</a></td>
+              <td class="py-3 px-4 text-sky-700">andreina@desmart.net</td>
+              <td class="py-3 px-3 text-center"><span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold">Elaboración y ejecución</span></td>
+            </tr>
+            <tr class="bg-[#EBF7FD]/70 hover:bg-amber-50">
+              <td class="py-3 px-3 text-center font-bold">11</td>
+              <td class="py-3 px-4 font-bold text-[#003B71]">ENERTECH</td>
+              <td class="py-3 px-4">Jhonny Nelson Caballero Vargas</td>
+              <td class="py-3 px-4">Av. Santa Cruz N° 2063, Edificio Boheme, Of. 4B, Zona Queru Qheru, Cochabamba, Bolivia</td>
+              <td class="py-3 px-3 text-center"><a href="tel:76285555" class="font-bold text-emerald-700">76285555</a></td>
+              <td class="py-3 px-4 text-sky-700">ncaballero.enertech@gmail.com</td>
+              <td class="py-3 px-3 text-center"><span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold">Elaboración y ejecución</span></td>
+            </tr>
+            <tr class="bg-white hover:bg-amber-50">
+              <td class="py-3 px-3 text-center font-bold">12</td>
+              <td class="py-3 px-4 font-bold text-[#003B71]">ENERSOL S.A.</td>
+              <td class="py-3 px-4">Javier Eduardo Lozada Wichtendahl</td>
+              <td class="py-3 px-4">Av. Doble Vía a la Guardia Km. 3 ½, N° 4150, Zona Sur Oeste</td>
+              <td class="py-3 px-3 text-center"><a href="tel:77351594" class="font-bold text-emerald-700">77351594</a></td>
+              <td class="py-3 px-4 text-sky-700">juanita@enersol-sa.com</td>
+              <td class="py-3 px-3 text-center"><span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold">Elaboración y ejecución</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FORMULARIO DE REGISTRO ==================== -->
+  <section id="formulario" class="py-16 bg-slate-100 flex-1">
+    <div class="max-w-3xl mx-auto px-4">
+      <div class="bg-white rounded-3xl shadow-xl border border-slate-200 p-6 sm:p-10">
+        <div class="text-center mb-8">
+          <span class="text-xs font-bold uppercase tracking-wider text-amber-800 bg-amber-100 px-3 py-1 rounded-full">
+            Área Comercial · Registro en Feria
+          </span>
+          <h2 class="text-3xl font-extrabold text-[#003B71] mt-3">Registro de Interesados</h2>
+          <p class="text-sm text-slate-600 mt-1">Completa tus datos para recibir asesoría personalizada.</p>
+        </div>
+
+        <div id="generalAlert" class="hidden mb-6 p-4 rounded-xl bg-amber-50 border border-amber-300 text-amber-900 text-sm font-medium"></div>
+
+        <form id="regForm" class="space-y-5">
+          <!-- Nombre -->
+          <div>
+            <label class="block text-sm font-bold text-slate-700 mb-1">Nombre Completo <span class="text-red-500">*</span></label>
+            <input type="text" id="nombre" required placeholder="Ej: Juan Carlos Rodríguez" class="w-full h-13 px-4 rounded-xl bg-slate-50 border-2 border-slate-200 focus:border-[#003B71] outline-none text-base">
+            <p id="err_nombre" class="text-xs text-red-600 mt-1 hidden"></p>
+          </div>
+
+          <!-- CI y Celular -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-bold text-slate-700 mb-1">Carnet de Identidad (C.I.) <span class="text-red-500">*</span></label>
+              <input type="text" id="ci" required placeholder="1234567 o 1234567 BN" class="w-full h-13 px-4 rounded-xl uppercase bg-slate-50 border-2 border-slate-200 focus:border-[#003B71] outline-none text-base">
+              <p id="err_ci" class="text-xs text-red-600 mt-1 hidden"></p>
+            </div>
+            <div>
+              <label class="block text-sm font-bold text-slate-700 mb-1">Celular <span class="text-red-500">*</span></label>
+              <input type="tel" id="celular" maxlength="8" inputmode="numeric" required placeholder="Ej: 71234567" class="w-full h-13 px-4 rounded-xl bg-slate-50 border-2 border-slate-200 focus:border-[#003B71] outline-none text-base">
+              <p id="err_celular" class="text-xs text-red-600 mt-1 hidden"></p>
+            </div>
+          </div>
+
+          <!-- Usuario y Medidor -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-bold text-slate-700 mb-1">Nº de Usuario <span class="text-red-500">*</span></label>
+              <input type="text" id="numero_usuario" required placeholder="Figura en tu factura de luz" class="w-full h-13 px-4 rounded-xl bg-slate-50 border-2 border-slate-200 focus:border-[#003B71] outline-none text-base">
+              <p class="text-[11px] text-slate-500 mt-0.5">Figura en la parte superior de tu factura.</p>
+              <p id="err_usuario" class="text-xs text-red-600 mt-1 hidden"></p>
+            </div>
+            <div>
+              <label class="block text-sm font-bold text-slate-700 mb-1">Nº de Medidor <span class="text-red-500">*</span></label>
+              <input type="text" id="numero_medidor" required placeholder="Ej: M-45891" class="w-full h-13 px-4 rounded-xl uppercase bg-slate-50 border-2 border-slate-200 focus:border-[#003B71] outline-none text-base">
+              <p class="text-[11px] text-slate-500 mt-0.5">Grabado en el medidor o en tu factura.</p>
+              <p id="err_medidor" class="text-xs text-red-600 mt-1 hidden"></p>
+            </div>
+          </div>
+
+          <!-- Correo -->
+          <div>
+            <label class="block text-sm font-bold text-slate-700 mb-1">Correo Electrónico (Opcional)</label>
+            <input type="email" id="correo" placeholder="ejemplo@correo.com" class="w-full h-13 px-4 rounded-xl bg-slate-50 border-2 border-slate-200 focus:border-[#003B71] outline-none text-base">
+            <p id="err_correo" class="text-xs text-red-600 mt-1 hidden"></p>
+          </div>
+
+          <!-- Consentimiento -->
+          <div class="pt-2">
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" id="autorizo" checked class="mt-1 w-5 h-5 text-[#003B71] rounded">
+              <span class="text-xs sm:text-sm text-slate-700">
+                <strong>Autorizo a ENDE DEL BENI</strong> a contactarme sobre Generación Distribuida y realizar la evaluación preliminar de mi suministro.
+              </span>
+            </label>
+            <p id="err_autorizo" class="text-xs text-red-600 mt-1 hidden"></p>
+          </div>
+
+          <!-- Botón Enviar -->
+          <div class="pt-4">
+            <button type="submit" id="submitBtn" class="w-full h-15 rounded-2xl bg-[#003B71] hover:bg-[#002855] text-white font-extrabold text-base shadow-lg transition active:scale-[0.98] flex items-center justify-center gap-2">
+              QUIERO REGISTRARME AHORA
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PANTALLA DE ÉXITO (MODAL) ==================== -->
+  <div id="successModal" class="hidden fixed inset-0 z-50 bg-[#001A36]/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-8 shadow-2xl text-center border-2 border-amber-300">
+      <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 mx-auto flex items-center justify-center text-3xl font-black mb-4">
+        ✓
+      </div>
+      <h3 id="successName" class="text-2xl font-black text-[#003B71]">¡Gracias!</h3>
+      <p class="text-sm text-slate-700 mt-1 font-medium">
+        Un asesor de <strong>ENDE DELBENI SAM · LA ENERGÍA DEL BENI</strong> se comunicará contigo.
+      </p>
+
+      <div id="offlineNotice" class="hidden mt-3 p-2.5 rounded-xl bg-amber-50 border border-amber-300 text-amber-900 text-xs font-semibold">
+        Guardado en el equipo, se enviará al volver la conexión.
+      </div>
+
+      <div class="mt-6">
+        <button id="btnReset" class="w-full py-3.5 rounded-xl bg-[#003B71] text-white font-bold text-sm shadow hover:bg-[#002855] transition">
+          Nuevo registro
+        </button>
+      </div>
+
+      <div class="mt-4 text-xs text-slate-400">
+        Regresando al inicio en <strong id="timerSec">8</strong>s...
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== STATUS INDICATOR ==================== -->
+  <div class="fixed bottom-4 right-4 z-40">
+    <div id="statusPill" class="px-3.5 py-2 rounded-2xl bg-emerald-600 text-white text-xs font-bold shadow-lg flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-emerald-200"></span>
+      <span id="statusText">● En línea</span>
+    </div>
+  </div>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-[#001D3D] text-slate-400 text-xs py-8 px-4 text-center border-t border-slate-800">
+    <p class="font-bold text-white">ENDE DELBENI SAM – LA ENERGÍA DEL BENI © 2026</p>
+    <p class="mt-1">Generación Distribuida · Estado Plurinacional de Bolivia</p>
+  </footer>
+
+  <!-- ==================== SUPABASE & LOGIC SCRIPT ==================== -->
+  <script>
+    const SUPABASE_ENDPOINT = 'https://dqqfaxaqrfpmlpkxxavv.supabase.co/rest/v1/registro_generacion_distribuida';
+    const SUPABASE_KEY = 'sb_publishable_YZ9g1IMronKpG9mZ44GBdg_ZSOfm36c';
+    const QUEUE_KEY = 'ende_beni_standalone_queue_v1';
+    const TODAY_KEY = 'ende_beni_count_' + new Date().toISOString().slice(0, 10);
+
+    const CI_REGEX = /^[0-9]{4,10}(-?[0-9A-Za-z]{1,3})?( ?[A-Za-z]{2})?$/;
+    const CELULAR_REGEX = /^[67][0-9]{7}$/;
+    const EMAIL_REGEX = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+
+    let countdownInterval = null;
+
+    function getQueue() {
+      try { return JSON.parse(localStorage.getItem(QUEUE_KEY) || '[]'); } catch(e) { return []; }
+    }
+    function saveQueue(q) {
+      try { localStorage.setItem(QUEUE_KEY, JSON.stringify(q)); } catch(e) {}
+    }
+    function incrementCount() {
+      try {
+        const cur = parseInt(localStorage.getItem(TODAY_KEY) || '0', 10);
+        localStorage.setItem(TODAY_KEY, (cur + 1).toString());
+      } catch(e) {}
+    }
+
+    function updateStatusIndicator() {
+      const isOnline = navigator.onLine;
+      const q = getQueue();
+      const statusPill = document.getElementById('statusPill');
+      const statusText = document.getElementById('statusText');
+
+      if (!isOnline) {
+        statusPill.className = 'px-3.5 py-2 rounded-2xl bg-rose-600 text-white text-xs font-bold shadow-lg flex items-center gap-2';
+        statusText.textContent = `● Sin conexión · ${q.length} pendiente(s)`;
+      } else if (q.length > 0) {
+        statusPill.className = 'px-3.5 py-2 rounded-2xl bg-amber-500 text-white text-xs font-bold shadow-lg flex items-center gap-2';
+        statusText.textContent = `● En línea · ${q.length} pendiente(s)`;
+      } else {
+        statusPill.className = 'px-3.5 py-2 rounded-2xl bg-emerald-600 text-white text-xs font-bold shadow-lg flex items-center gap-2';
+        statusText.textContent = '● En línea';
+      }
+    }
+
+    async function syncQueue() {
+      if (!navigator.onLine) return;
+      const q = getQueue();
+      if (q.length === 0) return;
+
+      const remaining = [];
+      for (const item of q) {
+        try {
+          const res = await fetch(SUPABASE_ENDPOINT, {
+            method: 'POST',
+            headers: {
+              'apikey': SUPABASE_KEY,
+              'Content-Type': 'application/json',
+              'Prefer': 'return=minimal'
+            },
+            body: JSON.stringify(item)
+          });
+          if (!res.ok) {
+            const txt = await res.text();
+            if (!txt.includes('23505')) remaining.push(item);
+          }
+        } catch(e) {
+          remaining.push(item);
+          break;
+        }
+      }
+      saveQueue(remaining);
+      updateStatusIndicator();
+    }
+
+    window.addEventListener('online', () => { updateStatusIndicator(); syncQueue(); });
+    window.addEventListener('offline', updateStatusIndicator);
+    setInterval(syncQueue, 30000);
+    updateStatusIndicator();
+
+    // Form submission
+    const form = document.getElementById('regForm');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      document.getElementById('generalAlert').classList.add('hidden');
+
+      const nombre = document.getElementById('nombre').value.trim();
+      const ci = document.getElementById('ci').value.trim().toUpperCase();
+      const usuario = document.getElementById('numero_usuario').value.trim();
+      const medidor = document.getElementById('numero_medidor').value.trim().toUpperCase();
+      const celular = document.getElementById('celular').value.trim();
+      const correoRaw = document.getElementById('correo').value.trim().toLowerCase();
+      const correo = correoRaw.length > 0 ? correoRaw : null;
+      const autorizo = document.getElementById('autorizo').checked;
+
+      // Validation
+      if (nombre.length < 3) { alert('El nombre debe tener al menos 3 caracteres.'); return; }
+      if (!CI_REGEX.test(ci)) { alert('Formato de C.I. inválido (Ej: 1234567 o 1234567 BN).'); return; }
+      if (!CELULAR_REGEX.test(celular)) { alert('El celular debe tener 8 dígitos y comenzar con 6 o 7.'); return; }
+      if (!usuario) { alert('El número de usuario es obligatorio.'); return; }
+      if (!medidor) { alert('El número de medidor es obligatorio.'); return; }
+      if (correo && !EMAIL_REGEX.test(correo)) { alert('Formato de correo inválido.'); return; }
+      if (!autorizo) { alert('Debe autorizar el contacto comercial para continuar.'); return; }
+
+      const submitBtn = document.getElementById('submitBtn');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando a ENDE DEL BENI...';
+
+      const payload = {
+        nombre: nombre,
+        ci: ci,
+        numero_usuario: usuario,
+        numero_medidor: medidor,
+        celular: celular,
+        correo: correo,
+        origen: 'feria'
+      };
+
+      let isOfflineSaved = false;
+
+      if (!navigator.onLine) {
+        const q = getQueue();
+        q.push(payload);
+        saveQueue(q);
+        incrementCount();
+        isOfflineSaved = true;
+        showSuccess(nombre, isOfflineSaved);
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'QUIERO REGISTRARME AHORA';
+        return;
+      }
+
+      try {
+        const res = await fetch(SUPABASE_ENDPOINT, {
+          method: 'POST',
+          headers: {
+            'apikey': SUPABASE_KEY,
+            'Content-Type': 'application/json',
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (res.ok) {
+          incrementCount();
+          showSuccess(nombre, false);
+        } else {
+          const txt = await res.text();
+          if (txt.includes('23505')) {
+            const ga = document.getElementById('generalAlert');
+            ga.textContent = 'Este C.I. y medidor ya están registrados en el sistema de ENDE DEL BENI.';
+            ga.classList.remove('hidden');
+          } else {
+            alert('Error en el registro. Verifique sus datos.');
+          }
+        }
+      } catch(err) {
+        // Fallback offline
+        const q = getQueue();
+        q.push(payload);
+        saveQueue(q);
+        incrementCount();
+        showSuccess(nombre, true);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'QUIERO REGISTRARME AHORA';
+        updateStatusIndicator();
+      }
+    });
+
+    function showSuccess(nombre, isOffline) {
+      if (typeof confetti === 'function') {
+        confetti({ particleCount: 70, spread: 60, origin: { y: 0.6 } });
+      }
+      document.getElementById('successName').textContent = `¡Gracias, ${nombre.split(' ')[0]}!`;
+      const offNot = document.getElementById('offlineNotice');
+      if (isOffline) offNot.classList.remove('hidden');
+      else offNot.classList.add('hidden');
+
+      document.getElementById('successModal').classList.remove('hidden');
+
+      // 8 second kiosk auto reset
+      let sec = 8;
+      document.getElementById('timerSec').textContent = sec;
+      clearInterval(countdownInterval);
+      countdownInterval = setInterval(() => {
+        sec--;
+        document.getElementById('timerSec').textContent = sec;
+        if (sec <= 0) {
+          resetKiosk();
+        }
+      }, 1000);
+    }
+
+    function resetKiosk() {
+      clearInterval(countdownInterval);
+      document.getElementById('successModal').classList.add('hidden');
+      form.reset();
+      document.getElementById('autorizo').checked = true;
+      document.getElementById('formulario').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    document.getElementById('btnReset').addEventListener('click', resetKiosk);
+  </script>
+</body>
+</html>
